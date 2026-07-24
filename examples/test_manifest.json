@@ -1,0 +1,5 @@
+{
+    "app_name": "uex_prod_test",
+    "version": "1.0.0",
+    "capabilities": ["gui", "ai", "plugins"]
+}

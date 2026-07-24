@@ -1,0 +1,50 @@
+{
+  "uex_version": 1,
+  "app_info": {
+    "name": "example_app",
+    "version": "1.0.0"
+  },
+  "capabilities": {
+    "cpu": ["x86_64", "aarch64", "riscv64", "wasm"],
+    "memory": {
+      "minimum_mb": 64,
+      "recommended_mb": 256
+    },
+    "permissions": {
+      "network": true,
+      "filesystem": "read-only",
+      "gpu": false,
+      "ai_inference": true
+    }
+  },
+  "execution_modes": [
+    {
+      "mode": "desktop",
+      "entrypoint": "gui_main"
+    },
+    {
+      "mode": "server",
+      "entrypoint": "server_main"
+    },
+    {
+      "mode": "embedded",
+      "entrypoint": "headless_main"
+    }
+  ],
+  "modules": [
+    {
+      "name": "llama_model",
+      "type": "ai_model",
+      "chunk_id": "VFS_1",
+      "path": "/models/llama.gguf",
+      "lazy_load": true
+    },
+    {
+      "name": "gpu_driver",
+      "type": "shared_lib",
+      "chunk_id": "VFS_1",
+      "path": "/lib/libcuda.so",
+      "lazy_load": true
+    }
+  ]
+}
